@@ -26,18 +26,38 @@ class View extends EventEmitter {
     console.log(this);
   }
 
-  allowDrop(event) {
-    event.preventDefault();
+  allowDrop(ev) {
+    console.log(
+      `dragOver: dropEffect = ${ev.dataTransfer.dropEffect} ; effectAllowed = ${ev.dataTransfer.effectAllowed}`
+    );
+    ev.preventDefault();
+    // Set the dropEffect to move
+    ev.dataTransfer.effectAllowed = "copy";
+    ev.dataTransfer.dropEffect = "copy";
+    console.log(
+      `dragOver: dropEffect = ${ev.dataTransfer.dropEffect} ; effectAllowed = ${ev.dataTransfer.effectAllowed}`
+    );
   }
 
-  drag(event) {
-    event.dataTransfer.setData("id", event.target.id);
+  drag(ev) {
+    console.log(
+      `dragStart: dropEffect = ${ev.dataTransfer.dropEffect} ; effectAllowed = ${ev.dataTransfer.effectAllowed}`
+    );
+
+    ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.effectAllowed = "copy";
+    ev.dataTransfer.dropEffect = "copy";
   }
 
-  drop(event) {
-    let itemId = event.dataTransfer.getData("id");
-    event.target.append(document.getElementById(itemId));
-    console.log(event);
+  drop(ev) {
+    console.log(
+      `drop: dropEffect = ${ev.dataTransfer.dropEffect} ; effectAllowed = ${ev.dataTransfer.effectAllowed}`
+    );
+    ev.preventDefault();
+
+    // Get the id of the target and add the moved element to the target's DOM
+    const data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
   }
 
   handleClick(event) {
