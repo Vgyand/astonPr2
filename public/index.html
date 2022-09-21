@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <h1 class="title">CringeCraft</h1>
     <div class="appWrapper">
       <div class="items" id="itemsList">
         <ul class="items-list">
@@ -54,14 +55,21 @@
         </ul>
       </div>
       <div class="craft">
+        <h2>craft</h2>
         <div class="craftingTable">
           <div class="slot1" id="slot1"></div>
           <div class="slot2" id="slot2"></div>
         </div>
-        <button class="craftBtn">Craft</button>
+        <button class="craftBtn" id="craftBtn">Craft</button>
       </div>
     </div>
-
+    <h2 class="made">made item</h2>
+    <div class="combinedItem" id="crafted"></div>
+    <div style="text-align: center; color: aliceblue">
+      recepies work in progress <br />
+      stone + stick = axe <br />
+      stick + coal = torch
+    </div>
     <script src="app.js"></script>
   </body>
 </html>

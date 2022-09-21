@@ -8,7 +8,5 @@ saveAndInit(items);
 const state = load();
 
 const model = new Model(state);
-
 const view = new View();
 const controller = new Controller(model, view);
-console.log(view.drag());
